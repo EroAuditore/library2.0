@@ -10,13 +10,15 @@ const addBook = () => {
     library.push(book);
     displayBooks();
 }
-const removeBook = (bookRemove) => {
-    library = library.filter((book) => book.title !== bookRemove.title);
+
+const removeBook = (title) => {
+    console.log(title);
+    library = library.filter((book) => book.title !== title);
+    displayBooks();
 }
 
 const displayBooks= ()=>{
 
-   
     libraryDiv = document.getElementById('library');
     libraryDiv.innerHTML = "";
     library.map((book)=>{
@@ -27,7 +29,10 @@ const displayBooks= ()=>{
         p2.innerHTML = book.title;
         hr = document.createElement('hr')
         btn = document.createElement('BUTTON');
-        btn.innerHTML = "Remove"
+        btn.innerHTML = "Remove";
+        btn.addEventListener('click', function() {
+            removeBook(book.title);
+        })
         divBook.appendChild(p);
         divBook.appendChild(p2);
         divBook.appendChild(hr);
