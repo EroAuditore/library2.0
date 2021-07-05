@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Library 2.0</span>
+      </div>
+      </nav>
+  </header>
+  
+  
+  <main class="container">
+    <section>
+        <div>
+            <form>
+                <div class="mb-3">
+                <label for="Author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="Author" >
+                </div>
+                <div class="mb-3">
+                <label for="Title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="Title">
+                </div>
+                <button type="button" class="btn btn-primary" id="addBtn" onclick='addBook();'>Add</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+      <div id="library">
+
+        
+      </div>
+    </section>
+  </main>
+  
+  <script src="assets/script.js"></script>
+</body>
+</html>
