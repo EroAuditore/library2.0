@@ -9,12 +9,14 @@ const addBook = () => {
     book.title = document.getElementById('Title').value;
     library.push(book);
     displayBooks();
+    SaveLibrary();
 }
 
 const removeBook = (title) => {
     console.log(title);
     library = library.filter((book) => book.title !== title);
     displayBooks();
+    SaveLibrary();
 }
 
 const displayBooks= ()=>{
@@ -41,3 +43,13 @@ const displayBooks= ()=>{
     })
 
 };
+
+
+ window.onload = function () {
+    library = JSON.parse(localStorage.getItem('library') || '[]');
+    displayBooks();
+ };
+  
+  function SaveLibrary() {
+    localStorage.setItem('library', JSON.stringify(library));
+  }
