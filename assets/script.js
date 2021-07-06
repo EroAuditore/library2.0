@@ -50,7 +50,7 @@ function displayBooks() {
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
-      myLibrary.removeBook(book.title);
+     removeBook(book.title);
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
@@ -62,11 +62,9 @@ function displayBooks() {
 }
 
 window.onload = function () {
-  // library = JSON.parse(localStorage.getItem('library') || '[]');
-  displayBooks();
+    displayBooks();
 };
 
 function SaveLibrary() {
-  // localStorage.setItem('library', JSON.stringify(library));
   myLibrary.saveLibrary();
 }
