@@ -1,20 +1,38 @@
 /* eslint no-use-before-define:["error",{"functions":false}] */
 
-let library = [];
+class Library {
+  constructor() {
+    this.library = JSON.parse(localStorage.getItem('library') || '[]');
+  }
+
+  addBook(book) {
+    this.library.push(book);
+  }
+
+  removeBook(title) {
+    this.library = this.library.filter((book) => book.title !== title);
+  }
+
+  saveLibrary() {
+    localStorage.setItem('library', JSON.stringify(this.library));
+  }
+}
+
+let myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
+
 function addBook() {
   const book = {};
   book.author = document.getElementById('Author').value;
   book.title = document.getElementById('Title').value;
-  library.push(book);
+  myLibrary.addBook(book);
   displayBooks();
   SaveLibrary();
 }
 
 function removeBook(title) {
-  console.log(title);
-  library = library.filter((book) => book.title !== title);
+  myLibrary.removeBook(title);
   displayBooks();
   SaveLibrary();
 }
@@ -22,7 +40,7 @@ function removeBook(title) {
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
-  library.map((book) => {
+  myLibrary.library.map((book) => {
     const divBook = document.createElement('div');
     const p = document.createElement('p'); // Author
     p.innerHTML = book.author;
@@ -32,7 +50,7 @@ function displayBooks() {
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
-      removeBook(book.title);
+      myLibrary.removeBook(book.title);
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
@@ -44,10 +62,11 @@ function displayBooks() {
 }
 
 window.onload = function () {
-  library = JSON.parse(localStorage.getItem('library') || '[]');
+  // library = JSON.parse(localStorage.getItem('library') || '[]');
   displayBooks();
 };
 
 function SaveLibrary() {
-  localStorage.setItem('library', JSON.stringify(library));
+  // localStorage.setItem('library', JSON.stringify(library));
+  myLibrary.saveLibrary();
 }
