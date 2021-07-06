@@ -18,10 +18,9 @@ class Library {
   }
 }
 
-let myLibrary = new Library();
+const myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
-
 function addBook() {
   const book = {};
   book.author = document.getElementById('Author').value;
@@ -50,7 +49,7 @@ function displayBooks() {
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
-     removeBook(book.title);
+      removeBook(book.title);
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
@@ -62,7 +61,7 @@ function displayBooks() {
 }
 
 window.onload = function () {
-    displayBooks();
+  displayBooks();
 };
 
 function SaveLibrary() {
