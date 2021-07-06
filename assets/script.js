@@ -3,14 +3,17 @@
 class Library {
   constructor() {
     this.library = JSON.parse(localStorage.getItem('library') || '[]');
+    this._id= 0;
   }
 
   addBook(book) {
+    this._id +=1;
+    book._id = this._id
     this.library.push(book);
   }
 
-  removeBook(title) {
-    this.library = this.library.filter((book) => book.title !== title);
+  removeBook(_id) {
+    this.library = this.library.filter((book) => book._id !== _id);
   }
 
   saveLibrary() {
@@ -30,8 +33,8 @@ function addBook() {
   SaveLibrary();
 }
 
-function removeBook(title) {
-  myLibrary.removeBook(title);
+function removeBook(_id) {
+  myLibrary.removeBook(_id);
   displayBooks();
   SaveLibrary();
 }
@@ -49,7 +52,7 @@ function displayBooks() {
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
-      removeBook(book.title);
+      removeBook(book._id);
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
