@@ -44,11 +44,11 @@ function displayBooks() {
   libraryDiv.innerHTML = '';
   myLibrary.library.map((book) => {
     const divBook = document.createElement('div');
+    divBook.classList.add('list-item');
     const p = document.createElement('p'); // Author
     p.innerHTML = book.author;
     const p2 = document.createElement('p'); // Book
     p2.innerHTML = book.title;
-    const hr = document.createElement('hr');
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
@@ -56,7 +56,6 @@ function displayBooks() {
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
-    divBook.appendChild(hr);
     divBook.appendChild(btn);
     libraryDiv.appendChild(divBook);
     return book;
