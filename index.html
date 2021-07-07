@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
     <title>Library</title>
 </head>
 <body>
@@ -17,30 +19,45 @@
   
   
   <main class="container">
-    <section>
+    <section class="container mt-4">
+      <h2 class="mt-4 text-center">All awesome books</h2>
+      <div id="library" class="list-group mt-4">      
+      </div>
+    </section>
+    <section class="container mt-4">
+      <h2 class="mt-4 text-center">Add a new book</h2>
         <div>
             <form>
                 <div class="mb-3">
-                <label for="Author" class="form-label">Author</label>
-                <input type="text" class="form-control" id="Author" >
+                <input type="text" class="form-control" id="Author" placeholder="Author">
                 </div>
                 <div class="mb-3">
-                <label for="Title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="Title">
+                <input type="text" class="form-control" id="Title" placeholder="Title">
                 </div>
-                <button type="button" class="btn btn-primary" id="addBtn" onclick='addBook();'>Add</button>
+                <div class="container d-flex flex-row-reverse ">
+                  <button type="button" class="btn btn-primary" id="addBtn" onclick='addBook();'>Add</button>
+                </div>
             </form>
         </div>
     </section>
 
-    <section>
-      <div id="library">
-
-        
-      </div>
-    </section>
   </main>
   
   <script src="assets/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <footer class="footer bg-dark">
+    <div class="container-fluid bg-dark d-flex justify-content-around">
+      <div class="container col-5">
+        <h5 class="text-muted mt-4">Copyright &copy; 2021</h5>
+      </div>
+      <div class="container d-flex mt-2 col-7">
+        <p class="text-muted">Rights reserved to:</p>
+        <a class="text-muted mx-2 text-decoration-none" href="https://www.github.com/eroauditore">Eduardo Rodriguez </a>
+        <p class="text-muted"> & </p>
+        <a class="text-muted mx-2 text-decoration-none" href="https://www.github.com/eroauditore">Carlos Flores </a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

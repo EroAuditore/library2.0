@@ -31,6 +31,8 @@ function addBook() {
   myLibrary.addBook(book);
   displayBooks();
   SaveLibrary();
+  document.getElementById('Author').value = '';
+  document.getElementById('Title').value = '';
 }
 
 function removeBook(id) {
@@ -43,22 +45,33 @@ function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
   myLibrary.library.map((book) => {
+    const divListElm = document.createElement('div');
+    const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
-    const p = document.createElement('p'); // Author
-    p.innerHTML = book.author;
-    const p2 = document.createElement('p'); // Book
-    p2.innerHTML = book.title;
-    const hr = document.createElement('hr');
+
+    divListElm.classList.add('list-group-item');
+    divListElm.classList.add('list-group-item-action');
+    divListElm.classList.add('d-flex');
+    divListElm.classList.add('justify-content-between');
+
+    const bookText = document.createElement('h4');
+    bookText.innerHTML = `"${book.title}" by ${book.author}`;
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
+    btn.classList.add('btn');
+    btn.classList.add('btn-danger');
+
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
-    divBook.appendChild(p);
-    divBook.appendChild(p2);
-    divBook.appendChild(hr);
-    divBook.appendChild(btn);
-    libraryDiv.appendChild(divBook);
+
+    divListElm.appendChild(divBook);
+    divListElm.appendChild(divBtn);
+
+    divBook.appendChild(bookText);
+    divBtn.appendChild(btn);
+    libraryDiv.appendChild(divListElm);
+
     return book;
   });
 }
