@@ -46,7 +46,11 @@ function displayBooks() {
     const divBook = document.createElement('div');
     divBook.classList.add('list-group-item');
     divBook.classList.add('list-group-item-action');
-    
+
+    const h2 = document.createElement('h4');
+    h2.innerHTML = 'Author: ';
+    const bookName = document.createElement('h4');
+    bookName.innerHTML = 'Title: ';
     const p = document.createElement('p'); // Author
     p.innerHTML = book.author;
     const p2 = document.createElement('p'); // Book
@@ -54,11 +58,13 @@ function displayBooks() {
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.classList.add('btn');
-    btn.classList.add('btn-primary');
+    btn.classList.add('btn-danger');
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
+    divBook.appendChild(h2);
     divBook.appendChild(p);
+    divBook.appendChild(bookName);
     divBook.appendChild(p2);
     divBook.appendChild(btn);
     libraryDiv.appendChild(divBook);
@@ -66,7 +72,7 @@ function displayBooks() {
   });
 }
 
-window.onload = function () {
+window.onload = function() {
   displayBooks();
 };
 
