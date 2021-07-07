@@ -72,7 +72,7 @@ function displayBooks() {
   });
 }
 
-window.onload = function() {
+window.onload = function () {
   displayBooks();
 };
 
