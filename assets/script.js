@@ -43,18 +43,25 @@ function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
   myLibrary.library.map((book) => {
+    const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
-    divBook.classList.add('list-group-item');
-    divBook.classList.add('list-group-item-action');
 
-    const h2 = document.createElement('h4');
-    h2.innerHTML = 'Author: ';
+    libraryDiv.classList.add('list-group-item');
+    libraryDiv.classList.add('list-group-item-action');
+    libraryDiv.classList.add('row');
+    libraryDiv.classList.add('d-flex');
+    libraryDiv.classList.add('justify-content-between');
+    
+    divBtn.classList.add('flex-row-reverse');
+    divBook.classList.add('d-flex');
+    
     const bookName = document.createElement('h4');
-    bookName.innerHTML = 'Title: ';
+    bookName.innerHTML = `Title: ${book.title}`;
+    const h2 = document.createElement('h4');
+    h2.innerHTML = `Author: ${book.author}`;
     const p = document.createElement('p'); // Author
-    p.innerHTML = book.author;
     const p2 = document.createElement('p'); // Book
-    p2.innerHTML = book.title;
+    h2.classList.add('mx-3');
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
     btn.classList.add('btn');
@@ -62,12 +69,14 @@ function displayBooks() {
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
+
     divBook.appendChild(h2);
     divBook.appendChild(p);
     divBook.appendChild(bookName);
     divBook.appendChild(p2);
-    divBook.appendChild(btn);
+    divBtn.appendChild(btn);
     libraryDiv.appendChild(divBook);
+    libraryDiv.appendChild(divBtn);
     return book;
   });
 }
