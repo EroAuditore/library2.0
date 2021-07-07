@@ -44,13 +44,17 @@ function displayBooks() {
   libraryDiv.innerHTML = '';
   myLibrary.library.map((book) => {
     const divBook = document.createElement('div');
-    divBook.classList.add('list-item');
+    divBook.classList.add('list-group-item');
+    divBook.classList.add('list-group-item-action');
+    
     const p = document.createElement('p'); // Author
     p.innerHTML = book.author;
     const p2 = document.createElement('p'); // Book
     p2.innerHTML = book.title;
     const btn = document.createElement('BUTTON');
     btn.innerHTML = 'Remove';
+    btn.classList.add('btn');
+    btn.classList.add('btn-primary');
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
