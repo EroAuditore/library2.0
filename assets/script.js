@@ -76,10 +76,50 @@ function displayBooks() {
   });
 }
 
+function setDateTime() {
+  const currentDate = document.getElementById("currentDate");
+  let DateTime = luxon.DateTime;
+  currentDate.innerHTML = DateTime.now().toFormat("MMM dd yyyy, t");
+}
+
 window.onload = function () {
   displayBooks();
+  setDateTime();
 };
 
 function SaveLibrary() {
   myLibrary.saveLibrary();
+}
+
+function displaySection(section) {
+  switch(section){
+    case"list":
+        listSection = document.getElementById("listSection");
+        listSection.classList.remove('d-none');
+        formSection = document.getElementById("formSection");
+        formSection.classList.add('d-none');
+        contactSection = document.getElementById("contactSection");
+        contactSection.classList.add('d-none');
+        break;
+    
+        case"new":
+        listSection = document.getElementById("listSection");
+        listSection.classList.add('d-none');
+        formSection = document.getElementById("formSection");
+        formSection.classList.remove('d-none');
+        contactSection = document.getElementById("contactSection");
+        contactSection.classList.add('d-none');
+        break;
+
+        case"contact":
+        listSection = document.getElementById("listSection");
+        listSection.classList.add('d-none');
+        formSection = document.getElementById("formSection");
+        formSection.classList.add('d-none');
+        contactSection = document.getElementById("contactSection");
+        contactSection.classList.remove('d-none');
+        break;
+        
+        default: break;
+  }
 }

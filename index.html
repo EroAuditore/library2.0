@@ -10,21 +10,33 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Library 2.0</span>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="">
+          <a class="navbar-brand" href="#">Awesome Books</a>
+        </div>
+        <div class="navbar" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#" onclick='displaySection("list");'>List</a>
+            <a class="nav-link active" href="#" onclick='displaySection("new");'>Add new</a>
+            <a class="nav-link active" href="#" onclick='displaySection("contact");'>Contact</a>
+          </div>
+        </div>
       </div>
       </nav>
   </header>
   
   
   <main class="container">
-    <section class="container mt-4">
+    <section class="container mt-4 d-flex justify-content-end">
+      <h5 id="currentDate">Date Time</h5>
+    </section>
+    <section class="container mt-4" id="listSection">
       <h2 class="mt-4 text-center">All awesome books</h2>
       <div id="library" class="list-group mt-4">      
       </div>
     </section>
-    <section class="container mt-4">
+    <section class="container mt-4 d-none" id="formSection">
       <h2 class="mt-4 text-center">Add a new book</h2>
         <div>
             <form>
@@ -40,9 +52,21 @@
             </form>
         </div>
     </section>
-
+    <section class="container mt-4 d-none" id="contactSection">
+      <h3>Contact Information</h3>
+      <p>
+        Do you have any questions or you just want to say "Hello"?
+        You can reach out to us! 
+      </p>
+      <ul>
+        <li>Our e-mail: <a href="mailto:service@service.com">hello@mymail.com</a> </li>
+        <li>Our phone: <a href="tel:+52900000000">003458344432</a></li>
+        <li>Our addreress: Streetname #122, 85039 City, Country.</li>
+      </ul>
+    </section>
   </main>
   
+  <script src="assets/luxon.min.js"></script>
   <script src="assets/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
