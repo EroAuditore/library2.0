@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint no-use-before-define:["error",{"functions":false}] */
 
 class Library {
@@ -77,9 +78,10 @@ function displayBooks() {
 }
 
 function setDateTime() {
-  const currentDate = document.getElementById("currentDate");
-  let DateTime = luxon.DateTime;
-  currentDate.innerHTML = DateTime.now().toFormat("MMM dd yyyy, t");
+  const currentDate = document.getElementById('currentDate');
+  // eslint-disable-next-line no-unused-vars
+  const { DateTime } = luxon;
+  currentDate.innerHTML = DateTime.now().toFormat('MMM dd yyyy, t');
 }
 
 window.onload = function () {
@@ -91,35 +93,31 @@ function SaveLibrary() {
   myLibrary.saveLibrary();
 }
 
+// eslint-disable-next-line no-unused-vars
 function displaySection(section) {
-  switch(section){
-    case"list":
-        listSection = document.getElementById("listSection");
-        listSection.classList.remove('d-none');
-        formSection = document.getElementById("formSection");
-        formSection.classList.add('d-none');
-        contactSection = document.getElementById("contactSection");
-        contactSection.classList.add('d-none');
-        break;
-    
-        case"new":
-        listSection = document.getElementById("listSection");
-        listSection.classList.add('d-none');
-        formSection = document.getElementById("formSection");
-        formSection.classList.remove('d-none');
-        contactSection = document.getElementById("contactSection");
-        contactSection.classList.add('d-none');
-        break;
+  const listSection = document.getElementById('listSection');
+  const formSection = document.getElementById('formSection');
+  const contactSection = document.getElementById('contactSection');
 
-        case"contact":
-        listSection = document.getElementById("listSection");
-        listSection.classList.add('d-none');
-        formSection = document.getElementById("formSection");
-        formSection.classList.add('d-none');
-        contactSection = document.getElementById("contactSection");
-        contactSection.classList.remove('d-none');
-        break;
-        
-        default: break;
+  switch (section) {
+    case 'list':
+      listSection.classList.remove('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'new':
+      listSection.classList.add('d-none');
+      formSection.classList.remove('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'contact':
+      listSection.classList.add('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.remove('d-none');
+      break;
+
+    default: break;
   }
 }

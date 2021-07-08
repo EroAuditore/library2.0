@@ -1,0 +1,3 @@
+{
+  "eslintIgnore": ["luxon.min.js"]
+}
