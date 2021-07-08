@@ -45,11 +45,17 @@ function removeBook(id) {
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
+  let rowCount = 0;
+  
   myLibrary.library.map((book) => {
     const divListElm = document.createElement('div');
     const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
 
+    if(rowCount % 2 == 0) {
+      divListElm.classList.add('bg-secondary');
+    }
+    rowCount +=1;
     divListElm.classList.add('list-group-item');
     divListElm.classList.add('list-group-item-action');
     divListElm.classList.add('d-flex');
