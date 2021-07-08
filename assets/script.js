@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint no-use-before-define:["error",{"functions":false}] */
 
 class Library {
@@ -44,11 +45,17 @@ function removeBook(id) {
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
+  let rowCount = 0;
+
   myLibrary.library.map((book) => {
     const divListElm = document.createElement('div');
     const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
 
+    if (rowCount % 2 === 0) {
+      divListElm.classList.add('bg-secondary');
+    }
+    rowCount += 1;
     divListElm.classList.add('list-group-item');
     divListElm.classList.add('list-group-item-action');
     divListElm.classList.add('d-flex');
@@ -76,10 +83,47 @@ function displayBooks() {
   });
 }
 
+function setDateTime() {
+  const currentDate = document.getElementById('currentDate');
+  // eslint-disable-next-line no-unused-vars
+  const { DateTime } = luxon;
+  currentDate.innerHTML = DateTime.now().toFormat('MMM dd yyyy, t');
+}
+
 window.onload = function () {
   displayBooks();
+  setDateTime();
 };
 
 function SaveLibrary() {
   myLibrary.saveLibrary();
+}
+
+// eslint-disable-next-line no-unused-vars
+function displaySection(section) {
+  const listSection = document.getElementById('listSection');
+  const formSection = document.getElementById('formSection');
+  const contactSection = document.getElementById('contactSection');
+
+  switch (section) {
+    case 'list':
+      listSection.classList.remove('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'new':
+      listSection.classList.add('d-none');
+      formSection.classList.remove('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'contact':
+      listSection.classList.add('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.remove('d-none');
+      break;
+
+    default: break;
+  }
 }
